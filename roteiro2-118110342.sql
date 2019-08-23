@@ -82,14 +82,17 @@ ALTER TABLE tarefas ADD CONSTRAINT prioridadeMax CHECK(prioridade < 6 AND priori
 -- QUESTÃO 8
 
 CREATE TABLE funcionario(
-    cpf INTEGER PRIMARY KEY,
+    cpf VARCHAR(11) PRIMARY KEY,
     data_nasc DATE NOT NULL,
-    nome VARCHAR() NOT NULL,
-    funcao VARCHAR() NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    funcao VARCHAR(50) NOT NULL,
     nivel CHAR NOT NULL,
-    superior_cpf INTEGER FOREIGN KEY,
+    superior_cpf VARCHAR(11),
     CONSTRAINT restricFuncao CHECK(funcao = 'SUP_LIMPEZA' OR (funcao = 'LIMPEZA' AND superior_cpf IS NOT NULL)),
     CONSTRAINT restricNivel CHECK(nivel = 'J' OR nivel = 'P' OR nivel = 'S')
 
 );
+
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678911', '1980-05-07', 'Pedro da Silva', 'SUP_LIMPEZA', 'S', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678912', '1980-03-08', 'Jose da Silva', 'LIMPEZA', 'J', '12345678911');
 
