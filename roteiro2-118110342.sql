@@ -96,3 +96,30 @@ CREATE TABLE funcionario(
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678911', '1980-05-07', 'Pedro da Silva', 'SUP_LIMPEZA', 'S', null);
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678912', '1980-03-08', 'Jose da Silva', 'LIMPEZA', 'J', '12345678911');
 
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678913', '1980-04-09', 'joao da silva', 'LIMPEZA', 'J', null);
+
+-- QUESTÃO 9
+
+-- Deve funcionar:
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678914', '1987-04-02', 'Pedrovsky Romanov', 'LIMPEZA', 'S', '99999999999');
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678920', '1987-09-12', 'jOAO ANTONIO', 'SUP_LIMPEZA', 'P', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678931', '1992-08-01', 'Zé', 'SUP_LIMPEZA', 'P', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678932', '1992-12-08', 'Joseana', 'SUP_LIMPEZA', 'J', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678936', '1998-11-22', 'Mariana', 'LIMPEZA', 'S', '78787876545');
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678939', '1998-12-26', 'Marcos Costa', 'LIMPEZA', 'S', '78787876548');
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678945', '1998-12-29', 'Marina Fernandes', 'SUP_LIMPEZA', 'P', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678967', '1950-10-24', 'Gilberto Gil', 'SUP_LIMPEZA', 'J', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678969', '1952-12-28', 'Mick Jagger', 'SUP_LIMPEZA', 'S', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678989', '2000-09-22', 'Carouuuu', 'LIMPEZA', 'S', '79798564237');
+
+-- Não deve funcionar:
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678990', '2000-09-22', 'Mário Andrade', 'LIMPEZA', 'S', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678991', '2000-09-22', 'Higor Santos', 'SUP_LIMPEZA', 'V', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678992', '2000-09-22', 'Robert Plant', 'SUP_LIMPEZA', 'V', '79798564237');
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678995', '2000-09-22', 'Zezo O Principe dos Teclados', 'SUP_LIMPEZA', null, '79798564232');
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678998', '1975-09-22', 'Japa Souza', 'Servente de pedreiro', 'S', '79798564232');
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678999', '2000-02-03', 'Caroliny Valença', 'PRINCESA', 'S', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12347678001', '1998-09-22', 'Lucio Nathan', 'Incompetente', 'S', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('123476780056', '1998-09-22', 'Cilas Marques', 'LIMPEZA', 'S', '12345678534');
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12347678001', '1998-09-27', 'Gabriel Carvalho', 'LIMPEZA', 'Senior', '12345678537');
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678989', '1998-09-27', 'Carlos Drummond de Andrade', 'LIMPEZA', 'S', '12345678539');
