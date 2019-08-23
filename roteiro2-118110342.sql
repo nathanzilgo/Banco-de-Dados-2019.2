@@ -88,7 +88,7 @@ CREATE TABLE funcionario(
     funcao VARCHAR() NOT NULL,
     nivel CHAR NOT NULL,
     superior_cpf INTEGER FOREIGN KEY,
-    CONSTRAINT restricFuncao CHECK(funcao = 'LIMPEZA' OR funcao = 'SUP_LIMPEZA'),
+    CONSTRAINT restricFuncao CHECK(funcao = 'SUP_LIMPEZA' OR (funcao = 'LIMPEZA' AND superior_cpf IS NOT NULL)),
     CONSTRAINT restricNivel CHECK(nivel = 'J' OR nivel = 'P' OR nivel = 'S')
 
 );
