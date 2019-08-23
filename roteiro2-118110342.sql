@@ -75,3 +75,21 @@ ALTER TABLE tarefas ADD CONSTRAINT statusDom CHECK(status = 'P' OR status = 'E' 
 
 -- QUESTÃO 7
 
+UPDATE tarefas SET prioridade = 5 WHERE prioridade > 5;
+
+ALTER TABLE tarefas ADD CONSTRAINT prioridadeMax CHECK(prioridade < 6 AND prioridade >= 0);
+
+-- QUESTÃO 8
+
+CREATE TABLE funcionario(
+    cpf INTEGER PRIMARY KEY,
+    data_nasc DATE NOT NULL,
+    nome VARCHAR() NOT NULL,
+    funcao VARCHAR() NOT NULL,
+    nivel CHAR NOT NULL,
+    superior_cpf INTEGER FOREIGN KEY,
+    CONSTRAINT restricFuncao CHECK(funcao = 'LIMPEZA' OR funcao = 'SUP_LIMPEZA'),
+    CONSTRAINT restricNivel CHECK(nivel = 'J' OR nivel = 'P' OR nivel = 'S')
+
+);
+
