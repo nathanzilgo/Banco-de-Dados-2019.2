@@ -72,3 +72,6 @@ UPDATE tarefas SET status = 'E' WHERE status = 'R';
 UPDATE tarefas SET status = 'C' WHERE status = 'F';
 
 ALTER TABLE tarefas ADD CONSTRAINT statusDom CHECK(status = 'P' OR status = 'E' OR status = 'C');
+
+-- QUESTÃO 7
+
