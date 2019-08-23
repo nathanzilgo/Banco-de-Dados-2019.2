@@ -101,17 +101,17 @@ INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALU
 -- QUESTÃO 9
 
 -- Deve funcionar:
-INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678914', '1987-04-02', 'Pedrovsky Romanov', 'LIMPEZA', 'S', '99999999999');
-INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678920', '1987-09-12', 'jOAO ANTONIO', 'SUP_LIMPEZA', 'P', null);
-INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678931', '1992-08-01', 'Zé', 'SUP_LIMPEZA', 'P', null);
-INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678932', '1992-12-08', 'Joseana', 'SUP_LIMPEZA', 'J', null);
-INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678936', '1998-11-22', 'Mariana', 'LIMPEZA', 'S', '78787876545');
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('32322525199', '1987-04-02', 'Pedrovsky Romanov', 'LIMPEZA', 'S', '99999999999');
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('32323232911', '1987-09-12', 'jOAO ANTONIO', 'SUP_LIMPEZA', 'P', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('32323232955', '1992-08-01', 'Zé', 'SUP_LIMPEZA', 'P', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('32322525198', '1992-12-08', 'Joseana', 'SUP_LIMPEZA', 'J', null);
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('98765432111', '1998-11-22', 'Mariana', 'LIMPEZA', 'S', '78787876545');
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678939', '1998-12-26', 'Marcos Costa', 'LIMPEZA', 'S', '78787876548');
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678945', '1998-12-29', 'Marina Fernandes', 'SUP_LIMPEZA', 'P', null);
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678967', '1950-10-24', 'Gilberto Gil', 'SUP_LIMPEZA', 'J', null);
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678969', '1952-12-28', 'Mick Jagger', 'SUP_LIMPEZA', 'S', null);
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678989', '2000-09-22', 'Carouuuu', 'LIMPEZA', 'S', '79798564237');
-
+INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('98765432122', '1980-07-03', 'Martin Scorsese', 'SUP_LIMPEZA', 'S', null);
 -- Não deve funcionar:
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678990', '2000-09-22', 'Mário Andrade', 'LIMPEZA', 'S', null);
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678991', '2000-09-22', 'Higor Santos', 'SUP_LIMPEZA', 'V', null);
@@ -123,3 +123,12 @@ INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALU
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('123476780056', '1998-09-22', 'Cilas Marques', 'LIMPEZA', 'S', '12345678534');
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12347678001', '1998-09-27', 'Gabriel Carvalho', 'LIMPEZA', 'Senior', '12345678537');
 INSERT INTO funcionario (cpf, data_nasc, nome, funcao, nivel, superior_cpf) VALUES('12345678989', '1998-09-27', 'Carlos Drummond de Andrade', 'LIMPEZA', 'S', '12345678539');
+
+-- QUESTÃO 10
+
+ALTER TABLE tarefas ADD CONSTRAINT deleteConstraint FOREIGN KEY(func_resp_cpf) REFERENCES funcionario(cpf) ON DELETE CASCADE;
+DELETE FROM funcionario WHERE cpf = '12345678939';
+
+ALTER TABLE tarefas ADD CONSTRAINT deleteConstraint2 FOREIGN KEY(func_resp_cpf) REFERENCES funcionario(cpf) ON DELETE RESTRICT;
+DELETE FROM funcionario WHERE cpf = '32322525199';
+-- Nenhum erro -.-
