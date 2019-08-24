@@ -132,3 +132,8 @@ DELETE FROM funcionario WHERE cpf = '12345678939';
 ALTER TABLE tarefas ADD CONSTRAINT deleteConstraint2 FOREIGN KEY(func_resp_cpf) REFERENCES funcionario(cpf) ON DELETE RESTRICT;
 DELETE FROM funcionario WHERE cpf = '32322525199';
 -- Nenhum erro -.-
+
+-- QUESTÃO 11
+
+ALTER TABLE tarefas ALTER COLUMN func_resp_cpf DROP NOT NULL;
+ALTER TABLE tarefas ADD CONSTRAINT cpfNull CHECK(status = 'E' AND func_resp_cpf IS NULL);
