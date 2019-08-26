@@ -29,14 +29,17 @@ CREATE TABLE medicamento {
 };
 
 CREATE TABLE cliente {
-    nome        TEXT,
-    cpf         CHAR(11),
-    enderecos   
-       
+    nome        TEXT NOT NULL,
+    cpf         CHAR(11) NOT NULL,
+    enderecos   FOREIGN KEY REFERENCES enderecos(cpfCliente)
+
 }
 
 CREATE TABLE enderecos {
-    cpfCliente  CHAR(11) REFERENCES cliente(cpf),
-    endereco1   TEXT,
+    cpfCliente  CHAR(11) FOREIGN KEY REFERENCES cliente(cpf),
+    rua TEXT NOT NULL,
+    bairro TEXT NOT NULL,
+    cep BIGINT NOT NULL,
+    numero INTEGER NOT NULL
 
 }
