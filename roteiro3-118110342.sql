@@ -1,11 +1,11 @@
 
 
 CREATE TABLE farmacia {
-    id          BIGINT UNIQUE,
-    nome        TEXT,
+    id          BIGINT UNIQUE PRIMARY KEY,
+    nome        TEXT NOT NULL,
     sede        BOOLEAN,
-    endereco    TEXT,
-    gerenteCpf  VARCHAR(11)
+    endereco    TEXT NOT NULL,
+    gerenteCpf  VARCHAR(11) NOT NULL
 
 };
 
@@ -22,7 +22,7 @@ CREATE TABLE funcionario {
 
 CREATE TABLE medicamento {
     id          SERIAL  PRIMARY KEY,
-    nome        TEXT,
+    nome        TEXT NOT NULL,
     receita     BOOLEAN,
     bula        TEXT,
     fabricante  TEXT
@@ -33,7 +33,7 @@ CREATE TABLE cliente {
     cpf         CHAR(11) NOT NULL,
     enderecos   FOREIGN KEY REFERENCES enderecos(cpfCliente)
 
-}
+};
 
 CREATE TABLE enderecos {
     cpfCliente  CHAR(11) FOREIGN KEY REFERENCES cliente(cpf),
@@ -42,4 +42,12 @@ CREATE TABLE enderecos {
     cep BIGINT NOT NULL,
     numero INTEGER NOT NULL
 
+};
+
+CREATE TABLE venda {
+
+}
+
+CREATE TABLE entrega {
+    
 }
