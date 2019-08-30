@@ -5,11 +5,11 @@ CREATE TABLE farmacia (
     nome        TEXT NOT NULL,
     sede        BOOLEAN,
     rua         TEXT NOT NULL,
-    bairro      TEXT NOT NULL,
+    bairro      TEXT NOT NULL UNIQUE,
     numero      INTEGER
     gerenteCpf  VARCHAR(11) NOT NULL,
 
-    CONSTRAINT sedeUnica CHECK EXCLUDE USING gist(sede with =) WHERE (sede = true)
+    
 );
 
 CREATE TABLE funcionario (
