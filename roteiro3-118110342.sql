@@ -6,28 +6,30 @@ CREATE TABLE farmacia (
     sede        BOOLEAN,
     rua         TEXT NOT NULL,
     bairro      TEXT NOT NULL UNIQUE,
-    numero      INTEGER
-    gerenteCpf  VARCHAR(11) NOT NULL,
+    numero      INTEGER,
+    gerenteCpf  VARCHAR(11) NOT NULL REFERENCES funcionario(cpf),
 
-    
+    CONSTRAINT sedeUnica CHECK EXCLUDE USING gist(sede with =) WHERE (sede = true)
 );
+
+CREATE TYPE cargoType AS ENUM('farmaceutico', 'vendedor', 'entregador',
+    'caixa', 'administrador', null);
 
 CREATE TABLE funcionario (
     nome        TEXT NOT NULL,
     cpf         CHAR(11) PRIMARY KEY,
-    cargo       VARCHAR(20),
+    cargoType   cargo,
+    isGerente   BOOLEAN,
     farmaciaId  BIGINT REFERENCES farmacia(id),
     vendas      SERIAL REFERENCES venda(funcionarioCpf) ON DELETE RESTRICT,
 
-    CONSTRAINT cargos CHECK (cargo IN ( 'farmaceutico', 'vendedor', 'entregador',
-    'caixa', 'administrador', 'gerente', null))
-    
+    CONSTRAINT gerente CHECK (isGerente = TRUE WHERE cargo IN('administrador', 'entregador'))
 );
 
 CREATE TABLE medicamento (
     id          SERIAL  PRIMARY KEY,
     nome        TEXT NOT NULL,
-    receita     BOOLEAN,
+    receita     BOOLEAN NOT NULL,
     bula        TEXT,
     fabricante  TEXT,
     
@@ -60,9 +62,11 @@ CREATE TABLE venda (
     funcionarioCpf  CHAR(11) REFERENCES funcionario(cpf) NOT NULL,
     clienteCpf      CHAR(11) REFERENCES cliente(cpf),
     clienteEnd      CHAR(11) REFERENCES enderecosCliente(id),
-    medId           SERIAL REFERENCES medicamento(id)
+    medId           SERIAL REFERENCES medicamento(id),
 
-    CONSTRAINT clienteOuNao CHECK(clienteCpf = NULL && clienteEnd = NULL || clienteCpf != NULL && clienteEnd != NULL);
+    CONSTRAINT clienteOuNao CHECK(clienteCpf = NULL && clienteEnd = NULL || clienteCpf != NULL && clienteEnd != NULL),
+    CONSTRAINT receitaReq   CHECK(medId(receita) = TRUE WHERE clienteCpf != NULL),
+    CONSTRAINT funcionario  CHECK(  )
 );
 
 CREATE TABLE entrega (
