@@ -8,3 +8,5 @@ SELECT COUNT(*) FROM employee WHERE sex = 'F';
 
 -- Q2
 SELECT AVG(salary) FROM employee WHERE sex = 'M' AND substring(address, length(address)-1, length(address)) = 'TX';
+
+-- Q3
