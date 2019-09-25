@@ -26,7 +26,7 @@ GROUP BY e.fname ORDER BY qtd_supervisionados;
 -- Q6
 SELECT MIN(qtd) AS qtd FROM (SELECT COUNT(*) AS qtd FROM works_on GROUP BY works_on.pno) AS sel;
 
--- Q7 TODO
+-- Q7 TA ERRADA
 SELECT num_projeto, MIN(qtd) AS qtd FROM
 (SELECT w.pno AS num_projeto, COUNT(*) AS qtd FROM works_on AS w GROUP BY num_projeto) AS foo
 GROUP BY num_projeto, MIN(qtd);
@@ -58,7 +58,7 @@ SELECT DISTINCT e.fname FROM employee AS e, works_on AS w, dependent AS d,
 (SELECT * FROM project AS p WHERE p.plocation LIKE '%Sugarland%') AS foo
 WHERE (d.essn = e.ssn AND w.essn = e.ssn AND w.pno = foo.pnumber);
 
--- Q15
+-- Q15 TA ERRADA
 SELECT DISTINCT e.fname, e.lname FROM employee AS e, works_on as w JOIN
     works_on AS w WHERE w.essn = '123456789') AS foo
     ON foo.pno = w.pno;
